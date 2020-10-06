@@ -17,9 +17,28 @@ function showMessage(msg) {
     document.getElementById('messages').innerHTML = msg;
 }
 
+let soundEnabled = false;
+
+function toggleMute(){
+    soundEnabled = !soundEnabled;
+    const iconLabel = document.getElementById('#btn-icon');
+
+    //reset alla klasser
+    iconLabel.classList.remove('fa-volume-up')
+    iconLabel.classList.remove('fa-volume-mute')
+    
+    if(soundEnabled){
+        iconLabel.classList.add('fa-volume-up') 
+    }else{
+        iconLabel.classList.add('fa-volume-mute')
+    }
+    
+}
+
 function mute(src){
     mySoundWin.pause();
     mySoundLoose.pause();
+    soundEnabled = false;
 }
 
 
@@ -107,10 +126,12 @@ function sound(src) {
     this.sound.style.display = "none";
     document.body.appendChild(this.sound);
     this.play = function () {
-        this.sound.play();
+        if(soundEnabled){           
+            this.sound.play();
+        }
     }
     this.stop = function () {
-        this.sound.pause();
+        this.sound.stop();
     }
 }
 
