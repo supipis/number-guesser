@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supi's num guesser</title>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Changa&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="game-canvas">
+        <div id="mute">
+            <button id="btn"><i class="fas fa-volume-mute"></i></button>
+        </div>
+
+        <div id="game-container">
+            <h1>THE NUMBER GUESSER</h1>
+            <h2>Guess a num between 1-10</h2>
+            <h3>You have 3 guesses.</h3>
+        </div>
+
+        <div id="game">
+            <form>
+                <label for="txtGuess">Your guess</label>
+                <input type="text" id="txtGuess">
+                <div id="remaining"></div>
+                <input type="submit" id="button">
+                <br>
+                <button id="playAgain">Play again</button>
+            </form>
+        </div>
+
+        <div id="messages"></div>
+    
+
+    <script src="guesser.js"></script>
+</body>
+
+</html>
