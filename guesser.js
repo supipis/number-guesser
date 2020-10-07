@@ -8,6 +8,7 @@ let numOfGuesses = 0;
 let previousGusses = [];
 let mySoundWin;
 let mySoundLoose;
+let playGame = true;
 
 button.addEventListener("click", onSubmit);
 playAgainButton.addEventListener("click", newGame);
@@ -53,6 +54,7 @@ function onSubmit(e) {
         if (val == numToCompare) {
             showMessage("You guessed correctly!")
             mySoundWin.play();
+            endGame();
         } else if (val > numToCompare) {
             showMessage('Try a smaller num')
         } else if (val < numToCompare) {
@@ -62,6 +64,7 @@ function onSubmit(e) {
         if ((numOfGuesses === 3) && (val != numToCompare)) {
             showMessage(`Game over! Num to guess was ${numToCompare}`)
             mySoundLoose.play();
+            endGame();
         }
 
     };
@@ -96,9 +99,10 @@ function startGame() {
     clearInput();
     updateUI();
     showMessage("");
+    txtGuess.removeAttribute('disabled');
     mySoundWin = new sound("winner.mp3");
     mySoundLoose = new sound("loose.mp3");
-    writeMessage('guess-list', '');
+    
 }
 
 function clearInput(arguments) {
@@ -144,3 +148,10 @@ input.addEventListener("keyup",
             document.getElementById("button").click();
         }
     });
+
+    function endGame(){
+        txtGuess.value ='';
+        txtGuess.setAttribute('disabled','');
+        playGame = false;
+       
+    }
